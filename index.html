@@ -68,12 +68,14 @@
 
       const script = document.createElement("script");
       script.src = loaderUrl;
+      var unityI = null;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           spinner.style.display = "none";
           progressBarEmpty.style.display = "";
           progressBarFull.style.width = `${100 * progress}%`;
         }).then((unityInstance) => {
+          unityI = unityInstance;
           loadingCover.style.display = "none";
           if (canFullscreen) {
             if (!hideFullScreenButton) {
@@ -91,7 +93,7 @@
     </script>
     <script type="text/javascript">
       vkBridge.send('VKWebAppInit');
-      
+
       function auth(){
         vkBridge.send('VKWebAppGetUserInfo').then(_info =>{
           console.log(_info);
