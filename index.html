@@ -89,14 +89,9 @@
       };
       document.body.appendChild(script);
     </script>
-    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
-
     <script type="text/javascript">
-
       vkBridge.send('VKWebAppInit');
-
-
-
+      
       function auth(){
         vkBridge.send('VKWebAppGetUserInfo').then(_info =>{
           console.log(_info);
@@ -126,8 +121,6 @@
           console.log(data);
           unityI.SendMessage('VKSDK', 'RewardGetting',JSON.stringify(data.result));})
       }
-
-
     </script>
   </body>
 </html>
